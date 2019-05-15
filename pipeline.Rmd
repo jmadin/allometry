@@ -2,7 +2,7 @@
 title: "Notebook"
 author: "Me"
 date: "5/14/2019"
-output: html_document
+output: github_document
 editor_options: 
   chunk_output_type: console
 ---
@@ -77,7 +77,7 @@ write.csv(mod$coef, "output/model_coefs.csv")
 h <- sort(seeds$Height_log10)
 pred <- predict(mod, list(Height_log10=h), interval="confidence")
 
-pdf("figs/figure1.pdf")
+png("figs/figure1.png")
 
 plot(Weight_log10 ~ Height_log10, data=seeds, xlab="Height, log10", col="grey")
 lines(h, pred[,1], col="black", lty=2)
@@ -86,6 +86,9 @@ polygon(c(h, rev(h)), c(pred[,2], rev(pred[,3])), col=rgb(0, 0, 1, 0.2), border=
 dev.off()
 
 ```
+
+My final plot:  
+![](figs/figure1.png)
 
 ## Conclusions
 
